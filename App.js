@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState, useRef } from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></link>
 export default function App() {
+  const [isShowingText, setIsShowingText] = useState(true);
   return (
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topUnder}>
-          <Text style={styles.topTitle}>423423423425</Text>
+          <TextInput style={styles.topTitle} showSoftInputOnFocus={false} >{isShowingText}</TextInput>
           <Text class="uil uil-airplay"></Text>
         </View>
       </View>
@@ -14,22 +16,22 @@ export default function App() {
       <View style={styles.bottom}>
 
         <View style={styles.bottomUnder}>
-          <View style={styles.numBox}><Text style={styles.numFontC}>C</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFontC} >C</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>?</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>\</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>+</Text></View>
 
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>1</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>2</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>3</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>-</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>4</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>5</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>6</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "1")}>1</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "2")}>2</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "3")}>3</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont}>      -</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "4")}>4</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "5")}>5</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "6")}>6</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>*</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>7</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>8</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>9</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "7")}>7</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "8")}>8</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "9")}>9</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>/</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>&</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum}>0</Text></View>
@@ -89,8 +91,8 @@ const styles = StyleSheet.create({
     fontSize: 60,
     paddingHorizontal: 25,
   },
-  numFontNum:{
-    fontWeight:'bold',
+  numFontNum: {
+    fontWeight: 'bold',
     textAlign: 'center',
     color: 'black',
     justifyContent: 'center',
@@ -157,10 +159,18 @@ const styles = StyleSheet.create({
 
   },
   topUnder: {
-    marginBottom: 20
+    marginBottom: 20,
+    borderWidth: 3,
+    height: '70%',
+    width: "100%",
+    borderColor: "yellow",
   },
   topTitle: {
+    borderColor: "red",
+    height: '50%',
+    width: '100%',
+    borderWidth: 2,
     fontSize: 50,
-    color: 'white'
+    color: 'white',
   }
 });
