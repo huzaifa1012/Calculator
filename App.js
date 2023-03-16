@@ -5,11 +5,18 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></link>
 export default function App() {
   const [isShowingText, setIsShowingText] = useState(true);
+
+  const calculate = () => {
+    let evaluated = eval(isShowingText)
+    setIsShowingText(evaluated)
+  }
+
+
   return (
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topUnder}>
-          <Text style={styles.topTitle} onKeyPress={Keyboard.dismiss()} >{isShowingText}</Text>
+          <Text style={styles.topTitle}  >{isShowingText}</Text>
           <Text class="uil uil-airplay"></Text>
         </View>
       </View>
@@ -19,24 +26,24 @@ export default function App() {
         <View style={styles.bottomUnder}>
           <View style={styles.numBox}><Text style={styles.numFontC} onPress={() => setIsShowingText('')}>C</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>?</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>\</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>+</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont} onPress={() => setIsShowingText(isShowingText + "/")}>/</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont} onPress={() => setIsShowingText(isShowingText + '+')}>+</Text></View>
 
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "1")}>1</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "2")}>2</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "3")}>3</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>      -</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont} onPress={() => setIsShowingText(isShowingText + "-")}>-</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "4")}>4</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "5")}>5</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "6")}>6</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>*</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont} onPress={() => setIsShowingText(isShowingText + "*")}>X</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "7")}>7</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "8")}>8</Text></View>
           <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "9")}>9</Text></View>
-          <View style={styles.numBox}><Text style={styles.numFont}>/</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFont} onPress={() => setIsShowingText(isShowingText + "/")}>/</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>&</Text></View>
-          <View style={styles.numBoxNum}><Text style={styles.numFontNum}>0</Text></View>
-          <View style={styles.numBoxequal}><Text style={styles.equalFont}>=</Text></View>
+          <View style={styles.numBoxNum}><Text style={styles.numFontNum} onPress={() => setIsShowingText(isShowingText + "0")}>0</Text></View>
+          <View style={styles.numBoxequal}><Text style={styles.equalFont} onPress={calculate}>=</Text></View>
         </View>
       </View>
 
@@ -167,7 +174,7 @@ const styles = StyleSheet.create({
     borderColor: "yellow",
   },
   topTitle: {
-    paddingHorizontal:5,
+    paddingHorizontal: 5,
     borderColor: "red",
     height: '100%',
     width: '100%',
