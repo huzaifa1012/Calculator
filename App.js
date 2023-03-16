@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useRef } from 'react';
+import { Keyboard } from 'react-native';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></link>
 export default function App() {
@@ -8,7 +9,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topUnder}>
-          <TextInput style={styles.topTitle} showSoftInputOnFocus={false} >{isShowingText}</TextInput>
+          <Text style={styles.topTitle} onKeyPress={Keyboard.dismiss()} >{isShowingText}</Text>
           <Text class="uil uil-airplay"></Text>
         </View>
       </View>
@@ -16,7 +17,7 @@ export default function App() {
       <View style={styles.bottom}>
 
         <View style={styles.bottomUnder}>
-          <View style={styles.numBox}><Text style={styles.numFontC} >C</Text></View>
+          <View style={styles.numBox}><Text style={styles.numFontC} onPress={() => setIsShowingText('')}>C</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>?</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>\</Text></View>
           <View style={styles.numBox}><Text style={styles.numFont}>+</Text></View>
@@ -166,8 +167,9 @@ const styles = StyleSheet.create({
     borderColor: "yellow",
   },
   topTitle: {
+    paddingHorizontal:5,
     borderColor: "red",
-    height: '50%',
+    height: '100%',
     width: '100%',
     borderWidth: 2,
     fontSize: 50,
