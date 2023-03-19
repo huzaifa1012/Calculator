@@ -4,7 +4,7 @@ import { Keyboard } from 'react-native';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"></link>
 export default function App() {
-  const [isShowingText, setIsShowingText] = useState(true);
+  const [isShowingText, setIsShowingText] = useState("");
 
   const calculate = () => {
     let evaluated = eval(isShowingText)
@@ -168,17 +168,17 @@ const styles = StyleSheet.create({
   },
   topUnder: {
     marginBottom: 20,
-    borderWidth: 3,
+    // borderWidth: 3,
     height: '70%',
     width: "100%",
-    borderColor: "yellow",
+    // borderColor: "yellow",
   },
   topTitle: {
     paddingHorizontal: 5,
-    borderColor: "red",
+    // borderWidth: 2,
+    // borderColor: "red",
     height: '100%',
     width: '100%',
-    borderWidth: 2,
     fontSize: 50,
     color: 'white',
   }
