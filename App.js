@@ -7,8 +7,14 @@ export default function App() {
   const [isShowingText, setIsShowingText] = useState("");
 
   const calculate = () => {
-    let evaluated = eval(isShowingText)
-    setIsShowingText(evaluated)
+    try {
+
+      let evaluated = eval(isShowingText)
+      setIsShowingText(evaluated)
+
+    } catch (error) {
+      alert("A blind person can not use this application")
+    }
   }
 
 
@@ -16,7 +22,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.top}>
         <View style={styles.topUnder}>
-          <Text style={styles.topTitle}  >{isShowingText}</Text>
+          <Text style={styles.topTitle}>{isShowingText}</Text>
           <Text class="uil uil-airplay"></Text>
         </View>
       </View>
